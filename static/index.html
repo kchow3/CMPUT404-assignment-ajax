@@ -145,7 +145,8 @@ function addEntity(entity, data) {
     drawNextFrame(); // (but should we?)
     //DONE: Send a XHTML Request that updates the entity you just  modified!
     sendJSONXMLHTTPRequest('/entity/ + entity', data, function(jsonObj) {
-        console.log(JSON.stringify(jsonObj));
+        // console.log(JSON.stringify(jsonObj));
+        // world[entity] = jsonObj;
     });
 
 }
@@ -270,9 +271,11 @@ mouse.mousedraggers.push(function(x,y,clicked,e) {
 
 
 function update() {
-    //XXX: TODO Get the world from the webservice using a XMLHTTPRequest
+    //DONE: TODO Get the world from the webservice using a XMLHTTPRequest
     sendJSONXMLHTTPRequest('/world', null, function(jsonObj) {
-        console.log(JSON.stringify(jsonObj));
+        // console.log(JSON.stringify(jsonObj));
+        world = jsonObj;
+        drawNextFrame();
     });
     drawFrame();
 }

@@ -100,7 +100,7 @@ def get_entity(entity):
 def clear():
     '''Clear the world out!'''
     myWorld.clear()
-    return make_response('YOU HAVE DESTROYED THE WORLD')
+    return make_response('YOU HAVE DESTROYED THE WORLD!', 200)
 
 if __name__ == "__main__":
     app.run()
