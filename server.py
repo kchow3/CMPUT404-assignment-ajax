@@ -84,23 +84,23 @@ def update(entity):
     for key in data:
         myWorld.update(entity, key, data[key])
 
-    return make_response(jsonify(myWorld.get(entity)))
+    return make_response(jsonify(myWorld.get(entity)), 200)
 
 @app.route("/world", methods=['POST','GET'])    
 def world():
     '''you should probably return the world here'''
-    return make_response(jsonify(myWorld.world()))
+    return make_response(jsonify(myWorld.world()), 200)
 
 @app.route("/entity/<entity>")    
 def get_entity(entity):
     '''This is the GET version of the entity interface, return a representation of the entity'''
-    return make_response(jsonify(myWorld.get(entity)))
+    return make_response(jsonify(myWorld.get(entity)), 200)
 
 @app.route("/clear", methods=['POST','GET'])
 def clear():
     '''Clear the world out!'''
     myWorld.clear()
-    return make_response('YOU HAVE DESTROYED THE WORLD!', 200)
+    return make_response(jsonify(myWorld.world()), 200)
 
 if __name__ == "__main__":
     app.run()
